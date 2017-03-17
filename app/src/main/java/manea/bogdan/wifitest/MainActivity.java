@@ -42,6 +42,7 @@ public class MainActivity extends Activity {
         }else {
             //Do something, permission was previously granted; or legacy device
             getConnectionList();
+
         }
     }
 
