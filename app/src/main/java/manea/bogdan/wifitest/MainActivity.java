@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
         saveButton = (Button) findViewById(R.id.saveButton);
 
         // Initiate wifi service manager
-        mainWifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        mainWifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         // Check if wifi is disabled
         if (mainWifi.isWifiEnabled() == false)
