@@ -1,4 +1,6 @@
 package manea.bogdan.wifitest;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import android.Manifest;
@@ -13,14 +15,13 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import manea.bogdan.wifitest.R;
 
 public class MainActivity extends Activity {
 
@@ -139,11 +140,28 @@ public class MainActivity extends Activity {
 
             saveButton.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v){
-
+                    try {
+                        saveResults(sb.toString());
+                    } catch (Exception e) {
+                        Log.d("EXCEPTION","Something broke: " + e.toString());
+                    }
                 }
             });
-
         }
 
+        public void saveResults(String result) throws IOException {
+
+            String filename = "logFile";
+            FileOutputStream outputStream;
+
+            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+            outputStream.write(result.getBytes());
+            outputStream.close();
+
+            Log.d("LOG",result);
+            String showText = String.format( "File saved at %s/%s",getFilesDir(),filename);
+
+            Toast.makeText(getApplicationContext(), showText, Toast.LENGTH_LONG).show();
+        }
     }
 }
