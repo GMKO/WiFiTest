@@ -2,11 +2,11 @@
 WiFi Analyzer app for Android
 
 This application will scan for access points over wifi and will display the following results:
-SSID: The access point's name.
-BSSID: The MAC address.
-Frequency: The frequency on which the access point runs.
-Level of intensity: A value between 0 and 10 representing the intensity of the signal.
-Capabilities: The security capabilities of an access point.
+-SSID: The access point's name.
+-BSSID: The MAC address.
+-Frequency: The frequency on which the access point runs.
+-Level of intensity: A value between 0 and 10 representing the intensity of the signal.
+-Capabilities: The security capabilities of an access point.
 
 The app will ask for location and storage permissions in order to be able to scan for networks and save the results in a local log file.
 The app will check if the wifi is enabled at startup, if not, it will enable it in order to perform the scan. 
