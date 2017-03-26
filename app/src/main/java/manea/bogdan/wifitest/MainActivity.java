@@ -122,6 +122,7 @@ public class MainActivity extends Activity {
         super.onResume();
     }
 
+    //Method used to save the results in a log file at the specified path
     public void saveResults(String result) throws IOException {
         try {
             String filename = "log.txt";
@@ -132,6 +133,7 @@ public class MainActivity extends Activity {
 
             FileOutputStream fileOutputStream = new FileOutputStream(filePath);
 
+            //Each time a new list needs to be written, the previous one is deleted
             fileOutputStream.flush();
             fileOutputStream.write(result.getBytes());
             fileOutputStream.close();
@@ -144,7 +146,6 @@ public class MainActivity extends Activity {
     }
 
     // Broadcast receiver class calls its receive method when the number of wifi connections changes
-
     class WifiReceiver extends BroadcastReceiver {
 
         // This method is called when the number of wifi connections changes
@@ -154,8 +155,8 @@ public class MainActivity extends Activity {
             wifiList = mainWifi.getScanResults();
             sb.append("\nNumber of WiFi connections :"+wifiList.size()+"\n\n");
 
+            //Append results to the list that is going to be displayed to the user
             for(int i = 0; i < wifiList.size(); i++){
-
                 sb.append("Network #" + Integer.valueOf(i+1).toString());
                 sb.append("\nSSID: " + (wifiList.get(i)).SSID.toString());
                 sb.append("\nBSSID: " + (wifiList.get(i)).BSSID.toString());
@@ -165,14 +166,17 @@ public class MainActivity extends Activity {
                 sb.append("\n\n");
             }
 
+            //Display the list
             mainText.setText(sb);
 
+            //Clear the list
             clearButton.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v){
                     mainText.setText("\nNumber of WiFi connections :"+wifiList.size()+"\n\n");
                 }
             });
 
+            //Save the list locally
             saveButton.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v){
                     try {
