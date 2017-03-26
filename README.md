@@ -16,3 +16,5 @@ There are 2 buttons with which the user can interact:
     New values will show up when a change is detected during a scan.
   - A save button which will save the current list to a specified path in the system.
     The file is saved at "/storage/emulated/0/Documents" under the name "log.txt".
+
+Tested and working on a OnePlus 3 running Android 7.0
