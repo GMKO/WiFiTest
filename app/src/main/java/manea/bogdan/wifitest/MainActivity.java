@@ -34,11 +34,9 @@ public class MainActivity extends Activity {
     StringBuilder sb = new StringBuilder();
 
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-
             //After this point you wait for callback in onRequestPermissionsResult(int, String[], int[]) overriden method
             //Ask for location permission (to scan the WiFi)
             if(checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
